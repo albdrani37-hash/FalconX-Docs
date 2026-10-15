@@ -1,62 +1,29 @@
-FalconX Documentation
+# FalconX Documentation
 
-FalconX is a structured quantitative trading system designed to operate under real market conditions with strict execution discipline and risk control.
+High-level architecture notes for an independent Python quantitative-automation project. The core implementation and operational configuration are private; these notes do not establish production readiness or verified trading performance.
 
-This repository provides a high-level overview of the system architecture, design philosophy, and operational flow.
+## Architecture areas
 
-System Overview
+| Layer | Intended responsibility |
+| --- | --- |
+| Signal | Produce candidate actions from inputs and models |
+| Market context | Describe the market conditions relevant to a decision |
+| Risk controls | Apply defined exposure and position constraints |
+| Execution | Validate requests and interact with exchange interfaces |
+| Position state | Track lifecycle events, monitoring and exits |
+| Portfolio | Coordinate allocation and exposure |
+| Evaluation | Inspect decisions, logs and results |
 
-FalconX is built as a multi-layered system where each component has a defined role in the trading lifecycle.
+## Conceptual flow
 
-The goal is not just to generate trades, but to manage decisions, execution, and risk as a complete system.
+1. Read and validate market inputs.
+2. Generate and review candidate signals.
+3. Apply agreed risk and execution checks.
+4. Submit authorized requests and reconcile outcomes.
+5. Update state and record the evidence.
 
-Architecture
+These are architecture responsibilities, not a checklist of independently verified features. Deployment status and acceptance evidence must be established for the exact implementation being assessed.
 
-The system is composed of the following core layers:
+## Technical work samples
 
-Signal LayerGenerates trade candidates based on structured models and market inputs
-
-Market Intelligence LayerDetermines market conditions such as trend, range, or high volatility
-
-Risk EngineApplies strict rules including position limits, drawdown protection, and capital exposure control
-
-Execution LayerHandles order placement, validation, and interaction with exchange infrastructure
-
-Position ManagerTracks open positions and manages lifecycle including monitoring and exit logic
-
-Portfolio LayerControls capital allocation and ensures balanced exposure across positions
-
-Evaluation LayerAnalyzes system performance and logs decisions for continuous improvement
-
-Operational Flow
-
-Market data is processed
-
-Signals are generated and ranked
-
-Market conditions are evaluated
-
-Risk checks are applied
-
-Execution decision is made
-
-Orders are placed and monitored
-
-Positions are managed until exit
-
-Results are logged and analyzed
-
-Design Philosophy
-
-FalconX is built around the idea that:
-
-Execution matters more than signalsRisk management defines survivalConsistency is more important than short-term gains
-
-The system prioritizes control, discipline, and real-world reliability over aggressive trading behavior.
-
-Scope
-
-This repository does not include proprietary trading logic or execution code.
-
-It is intended to explain how the system is structured and how it operates at a high level
-
+See the [selected portfolio](https://github.com/albdrani37-hash/FalconX/blob/main/PORTFOLIO.md) for a runnable CRM approval/replay demonstration and the separate AI-agent trace-audit research repository.
